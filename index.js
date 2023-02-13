@@ -21,6 +21,14 @@ const comments = [
 app.get('/comments',(req,res)=>{
     res.render('comments/index',{comments})
 })
+app.get('/comments/new',(req,res)=>{
+    res.render('comments/new')
+})
+app.post('/comments',(req,res)=>{
+    const {username,comment} = req.body;
+    comments.push({username,comment})
+    res.redirect('/comments')
+})
 
 app.listen(2000,()=>{
     console.log("On Port 2000!");
